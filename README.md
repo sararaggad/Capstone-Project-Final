@@ -55,7 +55,7 @@ You are responsible for implementing a full-stack solution from scratch using Dj
 
 - **Git Requirements**  
   - One public GitHub repository  
-  - Minimum commit count: 20 (must reflect continuous, meaningful progress)  
+  - Minimum commit count: 25 (must reflect continuous, meaningful progress)  
   - Feature branch workflow required  
   - Commit messages must be clear and descriptive  
   - Pull requests are encouraged for feature integration  
