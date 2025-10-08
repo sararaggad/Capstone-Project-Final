@@ -11,7 +11,7 @@ You are responsible for implementing a full-stack solution from scratch using Dj
 
 <!-- - Project time: TBD   -->
 - Daily standups: 9:00am & 2:00pm  
-- Final presentations: 10/16/2025 (7-minute presentation + 3-minute Q&A)
+- Final presentations: 10/16/2025 (~5m per person or ~10m per team + 3-minute Q&A)
 
 ---
 
