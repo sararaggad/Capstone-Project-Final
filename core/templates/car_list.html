@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% block content %}
+<h1>Cars</h1>
+<form method="get">
+  <input name="q" value="{{ q }}" placeholder="Search brand/title/plate">
+  <select name="status">
+    <option value="">All</option>
+    <option value="available" {% if status=="available" %}selected{% endif %}>Available</option>
+    <option value="maintenance" {% if status=="maintenance" %}selected{% endif %}>Maintenance</option>
+  </select>
+  <button type="submit">Filter</button>
+  <a href="{% url 'car_create' %}">Add car</a>
+</form>
+<ul>
+  {% for c in cars %}
+    <li>
+      <a href="{% url 'car_detail' c.pk %}">{{ c.brand }} {{ c.title }} ({{ c.model_year }})</a>
+      — {{ c.daily_price }} JOD
+      <a href="{% url 'car_update' c.pk %}">edit</a>
+      <a href="{% url 'car_delete' c.pk %}">delete</a>
+    </li>
+  {% empty %}<li>No cars.</li>{% endfor %}
+</ul>
+<div>
+  {% if cars.has_previous %}<a href="?q={{ q }}&status={{ status }}&page={{ cars.previous_page_number }}">Prev</a>{% endif %}
+  <span>Page {{ cars.number }} / {{ cars.paginator.num_pages }}</span>
+  {% if cars.has_next %}<a href="?q={{ q }}&status={{ status }}&page={{ cars.next_page_number }}">Next</a>{% endif %}
+</div>
+{% endblock %}
