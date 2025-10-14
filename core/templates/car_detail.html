@@ -1,5 +1,11 @@
-<h2>{{ car.brand }} {{ car.title }} {{ car.model_year }}</h2>
-<p>Status: {{ car.get_status_display }}</p>
-<p>Seats: {{ car.seats }} | Transmission: {{ car.get_transmission_display }}</p>
-<p>Daily: {{ car.daily_price }} JOD </p>
-<p><a href="{% url 'car_list' %}">Back</a></p>
+{% extends "base.html" %}{% block title %}Car{% endblock %}{% block content %}
+<h1>{{ car.brand }} {{ car.title }} {{ car.model_year }}</h1>
+<div class="card">
+  {% if car.image_url %}<img class="thumb" src="{{ car.image_url }}" alt="car">{% endif %}
+  <p>Status: <span class="tag">{{ car.get_status_display }}</span></p>
+  <p>Seats: {{ car.seats }} | Transmission: {{ car.get_transmission_display }}</p>
+  <p><b>{{ car.daily_price }} JOD / day</b></p>
+  <p><a class="btn primary" href="{% url 'booking_create' car.pk %}">Book this car</a></p>
+  <p><a class="btn" href="{% url 'car_list' %}">Back</a></p>
+</div>
+{% endblock %}

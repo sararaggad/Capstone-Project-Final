@@ -1,36 +1,30 @@
 {% load static %}
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}Cars{% endblock %}</title>
+  <title>{% block title %}Car Rental{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-
-<nav>
-  <a href="{% url 'car_list' %}">الرئيسية</a>
-  {% if user.is_authenticated %}
-    | <a href="{% url 'logout' %}">خروج</a>
-  {% else %}
-    | <a href="{% url 'login' %}">دخول</a>
-  {% endif %}
+<nav class="nav">
+  <div class="container">
+    <a class="brand" href="{% url 'car_list' %}">CarRental</a>
+    <div class="links">
+      <a href="{% url 'car_list' %}">Home</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </div>
 </nav>
-<hr>
-
-{% if messages %}
-<ul class="messages">
-  {% for m in messages %}
-    <li>{{ m }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
-
-<main>
+<main class="container">
+  {% if messages %}<ul class="flash">{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
   {% block content %}{% endblock %}
 </main>
-
+<footer class="footer"><div class="container">© {{ now|date:"Y" }} CarRental</div></footer>
 </body>
-{% if messages %}<ul>{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
-
 </html>

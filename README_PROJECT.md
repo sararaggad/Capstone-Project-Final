@@ -52,3 +52,28 @@ If additional time is available, the following features will be implemented:
 ### 👩‍💻 Author
 **Sara Alraggad**  
 General Assembly – SE3 Cohort  
+
+# Car Rental Management System (Django Capstone Project)
+
+## Overview
+A Django web application that allows managing cars in a rental system with full CRUD functionality and admin control.
+
+## Features
+- Add, view, edit, delete cars  
+- Authentication (login/logout)  
+- Search, filter, and pagination  
+- Admin panel with image previews  
+- Responsive frontend design  
+
+## Tech Stack
+- Python / Django  
+- HTML / CSS  
+- SQLite (default database)
+
+## Setup
+```bash
+git clone <repo-link>
+cd Capstone-Project
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
