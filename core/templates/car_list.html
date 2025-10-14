@@ -16,7 +16,7 @@
   <div class="card">
     {% if c.image_url %}<img class="thumb" src="{{ c.image_url }}" alt="car">{% endif %}
     <h3>{{ c.brand }} {{ c.title }} ({{ c.model_year }})</h3>
-    <p class="tag">{{ c.get_status_display }}</p>
+    <p><span class="tag">{{ c.get_status_display }}</span></p>
     <p><b>{{ c.daily_price }} JOD / day</b></p>
     <p>
       <a class="btn" href="{% url 'car_detail' c.pk %}">Details</a>
@@ -24,9 +24,7 @@
       <a class="btn danger" href="{% url 'car_delete' c.pk %}">Delete</a>
     </p>
   </div>
-{% empty %}
-  <p>No cars.</p>
-{% endfor %}
+{% empty %}<p>No cars.</p>{% endfor %}
 </div>
 
 <div class="toolbar">
