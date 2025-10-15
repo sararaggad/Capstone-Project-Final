@@ -2,11 +2,12 @@ services:
   - type: web
     name: car-rental
     env: python
-    buildCommand: ""
-    startCommand: gunicorn car_rental.wsgi:application
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn car_rental.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: car_rental.settings
       - key: PYTHON_VERSION
         value: 3.11
     plan: free
+    autoDeploy: true
