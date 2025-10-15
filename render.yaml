@@ -2,13 +2,11 @@ services:
   - type: web
     name: car-rental
     env: python
-    plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn car_rental.wsgi:application"
+    buildCommand: ""
+    startCommand: gunicorn car_rental.wsgi:application
     envVars:
-      - key: DEBUG
-        value: False
-      - key: DJANGO_ALLOWED_HOSTS
-        value: render.com
+      - key: DJANGO_SETTINGS_MODULE
+        value: car_rental.settings
       - key: PYTHON_VERSION
         value: 3.11
+    plan: free
