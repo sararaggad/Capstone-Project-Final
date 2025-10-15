@@ -27,11 +27,11 @@ def car_detail(request, pk):
 
 @login_required
 def car_create(request):
-    form = CarForm(request.POST or None)
+    form = CarForm(request.POST or None, files=request.FILES or None)
     if request.method == 'POST' and form.is_valid():
         car = form.save()
         messages.success(request, 'Saved')
-        return redirect('car_detail', pk=car.pk)
+        return redirect('car_list')
     return render(request, 'car_form.html', {'form': form})
 
 
@@ -54,3 +54,17 @@ def car_delete(request, pk):
         messages.success(request, 'Deleted')
         return redirect('car_list')
     return render(request, 'car_confirm_delete.html', {'car': car})
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+
+def signup(request):
+    form = UserCreationForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        user = form.save()
+        login(request, user)
+        messages.success(request, "Account created")
+        return redirect("car_list")
+    return render(request, "registration/signup.html", {"form": form})
+from django.contrib.auth.decorators import login_required
+
+

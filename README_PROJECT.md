@@ -1,79 +1,42 @@
-## 🚗 Car Rental Lite
+# 🚗 Car Rental System
 
-A simplified Django web application that allows an admin to manage car listings (CRUD).  
-Bonus features include booking and user functionality if time allows.
-
----
-
-### 🟩 MVP (Minimum Viable Product)
-
-The MVP focuses on **Admin + Cars models**, where the admin can perform full CRUD operations.
-
-#### User Stories (MVP)
-1. As an **admin user**, I want to log in and log out so that I can access the admin dashboard.  
-2. As an **admin user**, I want to view the list of cars so that I can manage them easily.  
-3. As an **admin user**, I want to add new cars so that I can expand the fleet.  
-4. As an **admin user**, I want to edit car details so that I can keep the information up to date.  
-5. As an **admin user**, I want to delete cars so that I can remove unavailable ones.
+A Django web application that allows users to view, add, update, and delete cars.  
+The app includes full CRUD functionality and user authentication (Signup, Login, Logout).
 
 ---
 
-### 🟦 Bonus Features (Optional)
-
-If additional time is available, the following features will be implemented:
-
-#### User Stories (Bonus)
-1. As a **user**, I want to browse available cars with details (model, price, seats, transmission) so that I can choose the right one.  
-2. As a **user**, I want to create a booking by selecting start and end dates so that I can reserve a car.  
-3. As a **user**, I want to view my current and past bookings so that I can track their status (pending, confirmed, cancelled, completed).  
-4. As a **user**, I want to search and filter cars so that I can find what fits my needs faster.
+## 📸 Screenshot / Logo
+![App Screenshot](static/screenshot.png)
 
 ---
 
-### ⚙️ Tech Stack
-- Django (Python)
-- SQLite (default database)
-- HTML templates
-- Django Admin Panel
+## 🧩 App Description
+**Car Rental System** is a simple and functional web app that simulates a real car rental management platform.  
+It allows admins to manage car listings and users to browse cars, search, and filter them by brand or status.
 
 ---
 
-### 🧱 Current Progress
-- [x] Idea approved  
-- [x] ERD created  
-- [x] User stories written  
-- [x] Models built and migrated  
-- [x] Admin CRUD working  
-- [ ] Add Bonus features  
-- [ ] Deploy to Heroku  
+## ⚙️ Features
+- Create, Read, Update, Delete (CRUD) cars  
+- User authentication (Signup, Login, Logout)  
+- Filter cars by brand or availability status  
+- Admin dashboard for managing cars  
+- Clean English UI with styled layout  
+- Responsive design  
 
 ---
 
-### 👩‍💻 Author
-**Sara Alraggad**  
-General Assembly – SE3 Cohort  
+## 🧱 Tech Stack
+- **Python 3**  
+- **Django Framework**  
+- **SQLite3** (default database)  
+- **HTML / CSS**
 
-# Car Rental Management System (Django Capstone Project)
+---
 
-## Overview
-A Django web application that allows managing cars in a rental system with full CRUD functionality and admin control.
+## 🚀 Getting Started
 
-## Features
-- Add, view, edit, delete cars  
-- Authentication (login/logout)  
-- Search, filter, and pagination  
-- Admin panel with image previews  
-- Responsive frontend design  
-
-## Tech Stack
-- Python / Django  
-- HTML / CSS  
-- SQLite (default database)
-
-## Setup
+### 1️⃣ Clone Repository
 ```bash
-git clone <repo-link>
+git clone https://github.com/sararaggad/Capstone-Project.git
 cd Capstone-Project
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver

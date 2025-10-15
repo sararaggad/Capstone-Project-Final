@@ -1,35 +1,44 @@
-{% extends "base.html" %}{% block title %}Cars{% endblock %}{% block content %}
-<h1>Cars</h1>
-<form class="toolbar" method="get">
-  <input name="q" value="{{ q }}" placeholder="Search brand/title/plate">
-  <select name="status">
-    <option value="">All</option>
-    <option value="available" {% if status == "available" %}selected{% endif %}>Available</option>
-    <option value="maintenance" {% if status == "maintenance" %}selected{% endif %}>Maintenance</option>
-  </select>
-  <button class="btn" type="submit">Filter</button>
-  <a class="btn primary" href="{% url 'car_create' %}">Add car</a>
-</form>
-
-<div class="grid">
-{% for c in cars %}
-  <div class="card">
-    {% if c.image_url %}<img class="thumb" src="{{ c.image_url }}" alt="car">{% endif %}
-    <h3>{{ c.brand }} {{ c.title }} ({{ c.model_year }})</h3>
-    <p><span class="tag">{{ c.get_status_display }}</span></p>
-    <p><b>{{ c.daily_price }} JOD / day</b></p>
-    <p>
-      <a class="btn" href="{% url 'car_detail' c.pk %}">Details</a>
-      <a class="btn" href="{% url 'car_update' c.pk %}">Edit</a>
-      <a class="btn danger" href="{% url 'car_delete' c.pk %}">Delete</a>
-    </p>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="header">
+    <h1>Cars</h1>
+    <a href="{% url 'car_create' %}" class="btn primary">+ Add Car</a>
   </div>
-{% empty %}<p>No cars.</p>{% endfor %}
-</div>
 
-<div class="toolbar">
-  {% if cars.has_previous %}<a class="btn" href="?q={{ q }}&status={{ status }}&page={{ cars.previous_page_number }}">Prev</a>{% endif %}
-  <span>Page {{ cars.number }} / {{ cars.paginator.num_pages }}</span>
-  {% if cars.has_next %}<a class="btn" href="?q={{ q }}&status={{ status }}&page={{ cars.next_page_number }}">Next</a>{% endif %}
+  <div class="toolbar">
+    <form method="get" style="display:flex;gap:10px;flex-wrap:wrap;">
+      <input type="text" name="q" placeholder="Search brand / title / plate" value="{{ q }}">
+      <select name="status" class="select">
+        <option value="">All</option>
+        <option value="Available" {% if status == 'Available' %}selected{% endif %}>Available</option>
+        <option value="Rented" {% if status == 'Rented' %}selected{% endif %}>Rented</option>
+      </select>
+      <button type="submit" class="btn">Filter</button>
+    </form>
+  </div>
+
+  <div class="grid">
+    {% for car in cars %}
+      <div class="card">
+        <img src="{{ car.image_url }}" alt="{{ car.title }}">
+        <div class="body">
+          <h3>{{ car.brand }} {{ car.title }} ({{ car.model_year }})</h3>
+          <div class="meta">
+            <span class="badge">{{ car.status }}</span>
+            <span>{{ car.daily_price }} JOD / day</span>
+          </div>
+          <p class="mt-1">Plate: {{ car.plate_no }}</p>
+          <div class="actions mt-2">
+            <a href="{% url 'car_detail' car.pk %}" class="btn">Details</a>
+            <a href="{% url 'car_update' car.pk %}" class="btn">Edit</a>
+            <a href="{% url 'car_delete' car.pk %}" class="btn">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>No cars available.</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

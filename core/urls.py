@@ -7,4 +7,5 @@ urlpatterns = [
     path('new/', views.car_create, name='car_create'),
     path('<int:pk>/edit/', views.car_update, name='car_update'),
     path('<int:pk>/delete/', views.car_delete, name='car_delete'),
+    path('signup/', views.signup, name='signup'),
 ]

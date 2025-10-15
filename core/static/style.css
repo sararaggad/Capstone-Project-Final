@@ -1,21 +1,106 @@
-:root{--bg:#f6f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--primary:#0f172a;--accent:#0ea5e9;--border:#e5e7eb}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,Segoe UI,Arial}
-.container{max-width:1040px;margin:0 auto;padding:0 16px}
-.nav{background:var(--primary);color:#fff}
-.nav .container{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
-.nav a{color:#fff;text-decoration:none;margin-left:16px;opacity:.95}
-.nav a:hover{opacity:1} .brand{font-weight:700;letter-spacing:.3px}
-h1,h2{margin:18px 0}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}
-input,select{padding:9px 10px;border:1px solid var(--border);border-radius:10px;background:#fff}
-input[type="search"]{min-width:220px}
-button,.btn{display:inline-block;padding:9px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;cursor:pointer}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#06283a}
-.btn.danger{border-color:#ef4444;color:#7f1d1d}
-.flash{list-style:none;margin:12px 0;padding:0}
-.flash li{background:#ecfeff;border:1px solid #a5f3fc;padding:10px;border-radius:10px;margin-bottom:8px}
-.thumb{width:100%;height:160px;object-fit:cover;border-radius:10px;border:1px solid var(--border);margin-bottom:8px}
-.tag{display:inline-block;padding:3px 10px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:#334155;background:#f8fafc}
-.footer{margin-top:40px;color:var(--muted);padding:16px 0;border-top:1px solid var(--border)}
+/* ====== Base ====== */
+:root{
+  --bg:#0f1115;        /* خلفية */
+  --panel:#161a21;     /* بانل/كارد */
+  --soft:#202634;      /* عناصر ثانوية */
+  --muted:#8b93a7;     /* نص ثانوي */
+  --text:#e8ecf3;      /* نص أساسي */
+  --pri:#2e9fff;       /* لون فعل/روابط */
+  --ok:#35c759; --warn:#ffd60a; --err:#ff453a;
+  --radius:10px; --shadow:0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg); color:var(--text);
+}
+
+/* ====== Layout ====== */
+.container{max-width:1100px;margin:32px auto;padding:0 16px}
+.panel{background:var(--panel);border:1px solid #1f2430;border-radius:var(--radius);box-shadow:var(--shadow)}
+.header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #232838}
+.header h1{margin:0;font-size:22px}
+.content{padding:22px}
+
+/* ====== Navbar (اختياري) ====== */
+.nav{position:sticky;top:0;background:#0c0f14;border-bottom:1px solid #1a1f2b;backdrop-filter:saturate(140%) blur(6px);z-index:10}
+.nav .inner{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;gap:18px;align-items:center}
+.nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+.nav a:hover{background:var(--soft);color:var(--text)}
+
+/* ====== Forms ====== */
+form{display:grid;gap:14px}
+label{font-size:13px;color:var(--muted)}
+input,select,textarea{
+  width:100%; padding:10px 12px; border:1px solid #2a3040; border-radius:8px;
+  background:#0d1117; color:var(--text); outline:none; transition:.2s border;
+}
+input:focus,select:focus,textarea:focus{border-color:#3b82f6}
+.actions{display:flex;gap:10px;align-items:center}
+
+/* ====== Buttons ====== */
+.btn{display:inline-block;padding:10px 14px;border-radius:8px;border:1px solid #2a3040;background:#0d1117;color:var(--text);text-decoration:none;cursor:pointer}
+.btn:hover{border-color:#3b82f6}
+.btn.primary{background:linear-gradient(180deg,#1590ff,#1176d6);border-color:#1176d6}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn.ghost{background:transparent}
+
+/* ====== Cards/Grid لقائمة السيارات ====== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid #22283a;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card img{width:100%;height:160px;object-fit:cover;background:#0b0f15}
+.card .body{padding:14px 14px 16px}
+.card h3{margin:0 0 6px;font-size:18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:13px}
+.price{margin-top:10px;font-weight:700}
+.badge{padding:3px 8px;border-radius:999px;background:var(--soft);font-size:12px}
+
+/* ====== Table (لو تستعمل جدول) ====== */
+.table{width:100%;border-collapse:separate;border-spacing:0 10px}
+.table th{color:var(--muted);font-weight:600;text-align:left;padding:6px 10px}
+.table td{background:var(--panel);border:1px solid #22283a;border-left:0;border-right:0;padding:12px 10px}
+.table tr{border-radius:10px}
+.table tr td:first-child{border-left:1px solid #22283a;border-top-left-radius:10px;border-bottom-left-radius:10px}
+.table tr td:last-child{border-right:1px solid #22283a;border-top-right-radius:10px;border-bottom-right-radius:10px}
+
+/* ====== Search/Filter شريط علوي ====== */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.toolbar input[type="text"]{flex:1 min(320px)}
+.select{min-width:160px}
+
+/* ====== Messages ====== */
+.alert{padding:10px 12px;border-radius:8px;margin-bottom:12px}
+.alert.ok{background:#0f2316;border:1px solid #1c6b38;color:#9be29f}
+.alert.err{background:#2a1413;border:1px solid #7a2620;color:#ffb4ac}
+
+/* ====== Pagination ====== */
+.pagination{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.page{padding:8px 12px;border:1px solid #2a3040;border-radius:8px;color:var(--muted);text-decoration:none}
+.page.active,.page:hover{color:var(--text);border-color:#3b82f6}
+
+/* ====== Utilities ====== */
+.m-0{margin:0}.mt-1{margin-top:6px}.mt-2{margin-top:12px}.mt-3{margin-top:18px}
+.card {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: scale(1.03);
+}
+.card img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+.btn.primary {
+  background: linear-gradient(90deg, #007bff, #444);
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 8px 16px;
+}
+.btn.primary:hover {
+  background: linear-gradient(90deg, #0056b3, #222);
+}

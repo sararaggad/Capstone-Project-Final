@@ -1,12 +1,15 @@
 {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>{% block title %}Car Rental{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'styles.css' %}">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarRental | Dashboard</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
+
 <body>
 <nav class="nav">
   <div class="container">
@@ -17,6 +20,7 @@
         <a href="{% url 'logout' %}">Logout</a>
       {% else %}
         <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign up</a>
       {% endif %}
     </div>
   </div>
