@@ -8,6 +8,6 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: car_rental.settings
       - key: PYTHON_VERSION
-        value: 3.11
+        value: 3.11.8
     plan: free
     autoDeploy: true
